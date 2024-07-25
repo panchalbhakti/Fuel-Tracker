@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Map API -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="#">Fuel Tracker</a>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-topic">
+
+        <section id="home" class="section">
+            <h2>Welcome to Fuel Tracker</h2>
+            <p>Your reliable source for finding nearby petrol pumps and EV charging stations.</p>
+        </section>
+        
+        <div class="main-container">
+
+            <div id="controls">
+                <select id="fuel-options">
+                    <option value="petrol">Petrol</option>
+                    <option value="cng">CNG</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="ev-charging">EV Charging Station</option>
+                </select>
+
+                <button id="current-location" class="button">Use Current Location</button>
+                <input type="text" id="search-bar" class="input" placeholder="Search location">
+                <button id="search-button" class="button">Search</button>
+
+            </div>
+
+            <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+            <div id="map"></div>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWCxv79Ce2wNCkguHfkruQqvsRJH-Zr1s&libraries=places"></script>
+            
+        </div>
+    </main>
+
+    <button id="reviewButton" class="primary-button">Review</button>
+
+    <div id="reviewSection" class="hidden">
+        <h2>Rate your experience:</h2>
+        <div class="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        <p id="ratingValue">Your rating: <span id="rating"></span></p>
+        <button id="submitRating" class="primary-button">Submit</button>
+    </div>
+    
+    <footer class="footer-section">
+        <p>&copy; 2024 Fuel Tracker. All rights reserved.</p>
+        <p>For any inquiries, please contact us at <a href="mailto:support@fueltracker.com">support@fueltracker.com</a>.</p>
+    </footer>    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
