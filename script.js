@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mock submit rating
     submitRatingButton.addEventListener('click', () => {
         alert(`Rating submitted: ${ratingDisplay.textContent} stars`);
+        reviewSection.classList.add('hidden');
     });
 
 
