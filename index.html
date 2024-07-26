@@ -31,28 +31,36 @@
         <div class="main-container">
 
             <div id="controls">
-                <select id="fuel-options">
+                <!-- <select id="fuel-options">
                     <option value="petrol">Petrol</option>
                     <option value="cng">CNG</option>
                     <option value="diesel">Diesel</option>
                     <option value="ev-charging">EV Charging Station</option>
-                </select>
+                </select> -->
 
-                <button id="current-location" class="button">Use Current Location</button>
                 <input type="text" id="search-bar" class="input" placeholder="Search location">
                 <button id="search-button" class="button">Search</button>
-
+                
             </div>
+            <button id="current-location" class="button">Use Current Location</button>
 
             <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
-            <div id="map"></div>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWCxv79Ce2wNCkguHfkruQqvsRJH-Zr1s&libraries=places"></script>
+            <!-- <div id="map"></div> -->
             
         </div>
+        
+        <div class="main-content">
+            <div id="map"></div>
+            <div id="results-container">
+                <h3>Nearby Petrol Pumps</h3>
+                <ul id="results"></ul>
+            </div>
+        </div>
+        
     </main>
-
+    
     <button id="reviewButton" class="primary-button">Review</button>
-
+    
     <div id="reviewSection" class="hidden">
         <h2>Rate your experience:</h2>
         <div class="star-rating">
@@ -71,6 +79,7 @@
         <p>For any inquiries, please contact us at <a href="mailto:support@fueltracker.com">support@fueltracker.com</a>.</p>
     </footer>    
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWCxv79Ce2wNCkguHfkruQqvsRJH-Zr1s&libraries=places"></script>
     <script src="script.js"></script>
 </body>
 </html>
