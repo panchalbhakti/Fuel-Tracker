@@ -89,6 +89,47 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
+
+
+    function fetchResults(location) {
+        // Dummy function to simulate fetching results
+        const results = [
+            { name: 'Pump A', vicinity: 'Location A', lat: location.lat + 0.01, lng: location.lng + 0.01 },
+            { name: 'Pump B', vicinity: 'Location B', lat: location.lat + 0.02, lng: location.lng + 0.02 }
+        ];
+  
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+        results.forEach(result => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${result.name} - ${result.vicinity}`;
+            resultsContainer.appendChild(listItem);
+  
+            new google.maps.Marker({
+                position: { lat: result.lat, lng: result.lng },
+                map: map,
+                title: result.name
+            });
+        });
+    }
+  
+    function handleLocationSuccess(position) {
+        const location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        map.setCenter(location);
+        fetchResults(location);
+    }
+  
+    function handleLocationError() {
+        alert('Unable to retrieve your location.');
+    }
+  
+
+
+
+
     currentLocationButton.addEventListener('click', () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
