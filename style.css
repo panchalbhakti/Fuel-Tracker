@@ -11,7 +11,7 @@ body {
 
 header {
     background: #333;
-    padding: 15px 0;
+    padding: 8px 0;
     position: sticky;
     top: 0;
     width: 100%;
@@ -29,7 +29,7 @@ header {
 .navbar-brand a {
     color: #4CAF50;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -47,7 +47,7 @@ header {
 .navbar-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .navbar-links a:hover {
@@ -175,6 +175,13 @@ header {
     transition: background-color 0.3s ease, transform 0.2s;
 }
 
+.view-toggle {
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    margin: 10px 0 0 10px;
+    border: none;
+}
+
 .primary-button:hover {
     background-color: #45a049;
     transform: translateY(-2px);
@@ -194,8 +201,10 @@ header {
     text-align: center;
 }
 
-#reviewButton {
-    margin-left: 10rem;
+.review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
@@ -253,11 +262,11 @@ header {
 @media (max-width: 768px) {
 
     .navbar-links a {
-        font-size: 15px;
+        font-size: 19px;
     }
 
     .navbar-brand a {
-        font-size: 19px;
+        font-size: 22px;
     }
 
     .main-content {

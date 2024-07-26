@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchButton = document.getElementById('search-button');
     const searchBar = document.getElementById('search-bar');
     const fuelOptions = document.getElementById('fuel-options');
+    const satelliteViewButton = document.getElementById('satellite-view');
 
     // Toggle Review Section
     reviewButton.addEventListener('click', () => {
@@ -89,46 +90,16 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
-
-
-    function fetchResults(location) {
-        // Dummy function to simulate fetching results
-        const results = [
-            { name: 'Pump A', vicinity: 'Location A', lat: location.lat + 0.01, lng: location.lng + 0.01 },
-            { name: 'Pump B', vicinity: 'Location B', lat: location.lat + 0.02, lng: location.lng + 0.02 }
-        ];
-  
-        const resultsContainer = document.getElementById('results');
-        resultsContainer.innerHTML = '';
-        results.forEach(result => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${result.name} - ${result.vicinity}`;
-            resultsContainer.appendChild(listItem);
-  
-            new google.maps.Marker({
-                position: { lat: result.lat, lng: result.lng },
-                map: map,
-                title: result.name
-            });
-        });
-    }
-  
-    function handleLocationSuccess(position) {
-        const location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        };
-        map.setCenter(location);
-        fetchResults(location);
-    }
-  
-    function handleLocationError() {
-        alert('Unable to retrieve your location.');
-    }
-  
-
-
-
+    const satelliteButton = document.createElement('button');
+    satelliteButton.textContent = 'Satellite View';
+    satelliteButton.classList.add('view-toggle');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(satelliteButton);
+ 
+    satelliteButton.addEventListener('click', () => {
+        const currentTypeId = map.getMapTypeId();
+        map.setMapTypeId(currentTypeId === 'roadmap' ? 'satellite' : 'roadmap');
+        satelliteButton.textContent = currentTypeId === 'roadmap' ? 'Roadmap View' : 'Satellite View';
+    });
 
     currentLocationButton.addEventListener('click', () => {
         if (navigator.geolocation) {
@@ -174,8 +145,4 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
-    fuelOptions.addEventListener('change', (event) => {
-        console.log(`Selected fuel type: ${event.target.value}`);
-        // You can add your logic here to handle fuel type changes.
-    });
 });
