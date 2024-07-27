@@ -130,12 +130,11 @@ header {
 
 .main-content {
     display: flex;
-    /* flex-direction: column; */
 }
 
 #results-container {
     width: 25rem;
-    height: 6rem;
+    height: fit-content;
     text-align: center;
     padding: 10px;
     border: 1px solid #ddd;
@@ -280,6 +279,7 @@ header {
 
     #results-container {
         width: 19rem;
+        height: fit-content;
         text-align: center;
         margin-top: 1rem;
         margin-left: 1.5rem;

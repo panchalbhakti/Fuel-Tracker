@@ -6,9 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitRatingButton = document.getElementById('submitRating');
     const currentLocationButton = document.getElementById('current-location');
     const searchButton = document.getElementById('search-button');
-    const searchBar = document.getElementById('search-bar');
-    const fuelOptions = document.getElementById('fuel-options');
-    const satelliteViewButton = document.getElementById('satellite-view');
+    const resultsContainer = document.getElementById('results');
 
     // Toggle Review Section
     reviewButton.addEventListener('click', () => {
@@ -55,11 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
         reviewSection.classList.add('hidden');
     });
 
-
-
     // Map functionality
     const map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 20.5937, lng: 78.9629  },
+        center: { lat: 20.5937, lng: 78.9629 },
         zoom: 4
     });
 
@@ -95,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     satelliteButton.textContent = 'Satellite View';
     satelliteButton.classList.add('view-toggle');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(satelliteButton);
- 
+
     satelliteButton.addEventListener('click', () => {
         const currentTypeId = map.getMapTypeId();
         map.setMapTypeId(currentTypeId === 'roadmap' ? 'satellite' : 'roadmap');
@@ -104,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     currentLocationButton.addEventListener('click', () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
+            navigator.geolocation.getCurrentPosition(async (position) => {
                 const pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
@@ -112,6 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 map.setCenter(pos);
                 marker.setPosition(pos);
                 marker.setVisible(true);
+
+                // Fetch nearby petrol pumps
+                await fetchNearbyPlaces('petrol pump', `${pos.lat},${pos.lng}`);
             }, () => {
                 handleLocationError(true, map.getCenter());
             });
@@ -146,4 +145,38 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
+    // Fetch nearby places using RapidAPI
+    async function fetchNearbyPlaces(query, location, radius = 5000) {
+        const url = `https://map-places.p.rapidapi.com/queryautocomplete/json?input=${query}&location=${location}&radius=${radius}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': 'c0213903e8msh1eae9c419e0171cp1b8144jsn754236aa6560',
+                'x-rapidapi-host': 'map-places.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            displayResults(result);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Display the fetched results on the webpage
+    function displayResults(results) {
+        resultsContainer.innerHTML = '';
+
+        if (results && results.predictions) {
+            results.predictions.forEach((place) => {
+                const placeElement = document.createElement('div');
+                placeElement.textContent = place.description;
+                resultsContainer.appendChild(placeElement);
+            });
+        } else {
+            resultsContainer.textContent = 'No results found.';
+        }
+    }
 });
