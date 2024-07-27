@@ -98,32 +98,46 @@ document.addEventListener('DOMContentLoaded', function () {
         satelliteButton.textContent = currentTypeId === 'roadmap' ? 'Roadmap View' : 'Satellite View';
     });
 
+    // currentLocationButton.addEventListener('click', () => {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(async (position) => {
+    //             const pos = {
+    //                 lat: position.coords.latitude,
+    //                 lng: position.coords.longitude
+    //             };
+    //             map.setCenter(pos);
+    //             marker.setPosition(pos);
+    //             marker.setVisible(true);
+
+    //             // Fetch nearby petrol pumps
+    //             await fetchNearbyPlaces('petrol pump', `${pos.lat},${pos.lng}`);
+    //         }, () => {
+    //             handleLocationError(true, map.getCenter());
+    //         });
+    //     } else {
+    //         handleLocationError(false, map.getCenter());
+    //     }
+    // });
+
+    // function handleLocationError(browserHasGeolocation, pos) {
+    //     alert(browserHasGeolocation
+    //         ? "Error: The Geolocation service failed."
+    //         : "Error: Your browser doesn't support geolocation.");
+    // }
+
     currentLocationButton.addEventListener('click', () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(async (position) => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
+                const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
                 map.setCenter(pos);
                 marker.setPosition(pos);
                 marker.setVisible(true);
-
-                // Fetch nearby petrol pumps
                 await fetchNearbyPlaces('petrol pump', `${pos.lat},${pos.lng}`);
-            }, () => {
-                handleLocationError(true, map.getCenter());
-            });
+            }, () => handleLocationError(true, map.getCenter()));
         } else {
             handleLocationError(false, map.getCenter());
         }
     });
-
-    function handleLocationError(browserHasGeolocation, pos) {
-        alert(browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation.");
-    }
 
     searchButton.addEventListener('click', () => {
         const places = searchBox.getPlaces();
