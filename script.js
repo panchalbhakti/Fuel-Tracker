@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Map functionality
     const map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 20.5937, lng: 78.9629 },
-        zoom: 4
+        zoom: 4,
     });
 
     const marker = new google.maps.Marker({
         map,
-        anchorPoint: new google.maps.Point(0, -29)
+        anchorPoint: new google.maps.Point(0, -29),
     });
 
     const input = document.getElementById('search-bar');
@@ -138,7 +138,7 @@ currentLocationButton.addEventListener('click', () => {
                         position: pump,
                         map,
                         title: 'Petrol Pump',
-                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Example icon
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
                     });
                 });
 
