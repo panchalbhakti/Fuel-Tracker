@@ -87,6 +87,46 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
+
+
+
+
+    // Array of dummy petrol pump locations
+const petrolPumps = [
+    { lat: 23.0225, lng: 72.5714 },
+    { lat: 22.3039, lng: 70.8022 },
+    { lat: 21.1702, lng: 72.8311 },
+    // Add more dummy locations here
+];
+
+currentLocationButton.addEventListener('click', () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+            map.setCenter(pos);
+            marker.setPosition(pos);
+            marker.setVisible(true);
+
+            // Add markers for dummy petrol pump locations
+            petrolPumps.forEach((pump) => {
+                new google.maps.Marker({
+                    position: pump,
+                    map,
+                    title: 'Petrol Pump',
+                });
+            });
+
+            await fetchNearbyPlaces('petrol pump', pos.lat, pos.lng);
+        }, () => handleLocationError(true, map.getCenter()));
+    } else {
+        handleLocationError(false, map.getCenter());
+    }
+});
+
+
+
+
+
     const satelliteButton = document.createElement('button');
     satelliteButton.textContent = 'Satellite View';
     satelliteButton.classList.add('view-toggle');
@@ -97,33 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
         map.setMapTypeId(currentTypeId === 'roadmap' ? 'satellite' : 'roadmap');
         satelliteButton.textContent = currentTypeId === 'roadmap' ? 'Roadmap View' : 'Satellite View';
     });
-
-    // currentLocationButton.addEventListener('click', () => {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition(async (position) => {
-    //             const pos = {
-    //                 lat: position.coords.latitude,
-    //                 lng: position.coords.longitude
-    //             };
-    //             map.setCenter(pos);
-    //             marker.setPosition(pos);
-    //             marker.setVisible(true);
-
-    //             // Fetch nearby petrol pumps
-    //             await fetchNearbyPlaces('petrol pump', `${pos.lat},${pos.lng}`);
-    //         }, () => {
-    //             handleLocationError(true, map.getCenter());
-    //         });
-    //     } else {
-    //         handleLocationError(false, map.getCenter());
-    //     }
-    // });
-
-    // function handleLocationError(browserHasGeolocation, pos) {
-    //     alert(browserHasGeolocation
-    //         ? "Error: The Geolocation service failed."
-    //         : "Error: Your browser doesn't support geolocation.");
-    // }
 
     currentLocationButton.addEventListener('click', () => {
         if (navigator.geolocation) {
