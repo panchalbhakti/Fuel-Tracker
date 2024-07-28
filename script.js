@@ -87,48 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
-
-
-
-
-//    // Array of dummy petrol pump locations
-// const petrolPumps = [
-//     { lat: 23.0225, lng: 72.5714 },
-//     { lat: 22.3039, lng: 70.8022 },
-//     { lat: 21.1702, lng: 72.8311 },
-//     // Add more dummy locations here
-// ];
-
-// currentLocationButton.addEventListener('click', () => {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(async (position) => {
-//             const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-//             map.setCenter(pos);
-//             marker.setPosition(pos);
-//             marker.setVisible(true);
-
-//             // Add markers for dummy petrol pump locations
-//             petrolPumps.forEach((pump) => {
-//                 new google.maps.Marker({
-//                     position: pump,
-//                     map,
-//                     title: 'Petrol Pump',
-//                     icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-//                 });
-//             });
-
-//             await fetchNearbyPlaces('petrol pump', pos.lat, pos.lng);
-//         }, () => handleLocationError(true, map.getCenter()));
-//     } else {
-//         handleLocationError(false, map.getCenter());
-//     }
-// });
-
-
-
-
-
-
 // Function to generate random positions within a given radius (in meters) from a center point
 function generateRandomPosition(center, radius) {
     const x0 = center.lat;
@@ -153,31 +111,40 @@ function generateRandomPosition(center, radius) {
     };
 }
 
+// Flag to track if markers have been added
+let markersAdded = false;
+
 currentLocationButton.addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
             map.setCenter(pos);
-            map.setZoom(14);
+            map.setZoom(13); // Set the zoom level to zoom into the current location
             marker.setPosition(pos);
             marker.setVisible(true);
 
-            // Generate random petrol pump locations within a 3 km radius of the current location
-            const radius = 2000; // radius in meters
-            const petrolPumps = [];
-            for (let i = 0; i < 5; i++) { // Generate 5 random locations
-                petrolPumps.push(generateRandomPosition(pos, radius));
-            }
+            // Check if markers have already been added
+            if (!markersAdded) {
+                // Generate random petrol pump locations within a 3 km radius of the current location
+                const radius = 2000; // radius in meters
+                const petrolPumps = [];
+                for (let i = 0; i < 5; i++) { // Generate 10 random locations
+                    petrolPumps.push(generateRandomPosition(pos, radius));
+                }
 
-            // Add markers for random petrol pump locations
-            petrolPumps.forEach((pump) => {
-                new google.maps.Marker({
-                    position: pump,
-                    map,
-                    title: 'Petrol Pump',
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Example icon
+                // Add markers for random petrol pump locations
+                petrolPumps.forEach((pump) => {
+                    new google.maps.Marker({
+                        position: pump,
+                        map,
+                        title: 'Petrol Pump',
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Example icon
+                    });
                 });
-            });
+
+                // Set the flag to true after adding markers
+                markersAdded = true;
+            }
 
             await fetchNearbyPlaces('petrol pump', pos.lat, pos.lng);
         }, () => handleLocationError(true, map.getCenter()));
@@ -185,13 +152,6 @@ currentLocationButton.addEventListener('click', () => {
         handleLocationError(false, map.getCenter());
     }
 });
-
-
-
-
-
-
-
 
     const satelliteButton = document.createElement('button');
     satelliteButton.textContent = 'Satellite View';

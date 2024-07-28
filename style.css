@@ -66,16 +66,18 @@ header {
 }
 
 .section h2 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 2.5rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
     color: #4CAF50;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
 }
 
 .section p {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: #666;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
 }
 
 .input {
