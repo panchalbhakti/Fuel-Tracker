@@ -8,49 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchButton = document.getElementById('search-button');
     const resultsContainer = document.getElementById('results');
 
-    // Toggle Review Section
-    reviewButton.addEventListener('click', () => {
-        reviewSection.classList.toggle('hidden');
-    });
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const navbar = document.getElementById('navbar');
 
-    // Star rating functionality
-    stars.forEach(star => {
-        star.addEventListener('mouseover', () => {
-            highlightStars(star.dataset.value);
-        });
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode');
 
-        star.addEventListener('mouseout', () => {
-            resetStars();
-        });
-
-        star.addEventListener('click', () => {
-            selectStars(star.dataset.value);
-        });
-    });
-
-    function highlightStars(rating) {
-        stars.forEach(star => {
-            star.classList.toggle('hover', star.dataset.value <= rating);
-        });
-    }
-
-    function resetStars() {
-        stars.forEach(star => {
-            star.classList.remove('hover');
-        });
-    }
-
-    function selectStars(rating) {
-        stars.forEach(star => {
-            star.classList.toggle('selected', star.dataset.value <= rating);
-        });
-        ratingDisplay.textContent = rating;
-    }
-
-    // Mock submit rating
-    submitRatingButton.addEventListener('click', () => {
-        alert(`Rating submitted: ${ratingDisplay.textContent} stars`);
-        reviewSection.classList.add('hidden');
+        if (body.classList.contains('dark-mode')) {
+            darkModeToggle.textContent = 'Light Mode';
+        } else {
+            darkModeToggle.textContent = 'Dark Mode';
+        }
     });
 
     // Map functionality
@@ -232,4 +202,50 @@ currentLocationButton.addEventListener('click', () => {
             resultsContainer.textContent = 'No results found.';
         }
     }
+
+
+    // Toggle Review Section
+    reviewButton.addEventListener('click', () => {
+        reviewSection.classList.toggle('hidden');
+    });
+
+    // Star rating functionality
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            highlightStars(star.dataset.value);
+        });
+
+        star.addEventListener('mouseout', () => {
+            resetStars();
+        });
+
+        star.addEventListener('click', () => {
+            selectStars(star.dataset.value);
+        });
+    });
+
+    function highlightStars(rating) {
+        stars.forEach(star => {
+            star.classList.toggle('hover', star.dataset.value <= rating);
+        });
+    }
+
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('hover');
+        });
+    }
+
+    function selectStars(rating) {
+        stars.forEach(star => {
+            star.classList.toggle('selected', star.dataset.value <= rating);
+        });
+        ratingDisplay.textContent = rating;
+    }
+
+    // Mock submit rating
+    submitRatingButton.addEventListener('click', () => {
+        alert(`Rating submitted: ${ratingDisplay.textContent} stars`);
+        reviewSection.classList.add('hidden');
+    });
 });
