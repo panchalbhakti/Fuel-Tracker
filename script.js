@@ -91,28 +91,91 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // Array of dummy petrol pump locations
-const petrolPumps = [
-    { lat: 23.0225, lng: 72.5714 },
-    { lat: 22.3039, lng: 70.8022 },
-    { lat: 21.1702, lng: 72.8311 },
-    // Add more dummy locations here
-];
+//    // Array of dummy petrol pump locations
+// const petrolPumps = [
+//     { lat: 23.0225, lng: 72.5714 },
+//     { lat: 22.3039, lng: 70.8022 },
+//     { lat: 21.1702, lng: 72.8311 },
+//     // Add more dummy locations here
+// ];
+
+// currentLocationButton.addEventListener('click', () => {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(async (position) => {
+//             const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+//             map.setCenter(pos);
+//             marker.setPosition(pos);
+//             marker.setVisible(true);
+
+//             // Add markers for dummy petrol pump locations
+//             petrolPumps.forEach((pump) => {
+//                 new google.maps.Marker({
+//                     position: pump,
+//                     map,
+//                     title: 'Petrol Pump',
+//                     icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+//                 });
+//             });
+
+//             await fetchNearbyPlaces('petrol pump', pos.lat, pos.lng);
+//         }, () => handleLocationError(true, map.getCenter()));
+//     } else {
+//         handleLocationError(false, map.getCenter());
+//     }
+// });
+
+
+
+
+
+
+// Function to generate random positions within a given radius (in meters) from a center point
+function generateRandomPosition(center, radius) {
+    const x0 = center.lat;
+    const y0 = center.lng;
+    const rd = radius / 111300; // about 111300 meters per degree of latitude
+
+    const u = Math.random();
+    const v = Math.random();
+
+    const w = rd * Math.sqrt(u);
+    const t = 2 * Math.PI * v;
+
+    const x = w * Math.cos(t);
+    const y = w * Math.sin(t);
+
+    // Adjust the x-coordinate for the shrinking of the east-west distances
+    const xp = x / Math.cos(y0);
+
+    return {
+        lat: x0 + xp,
+        lng: y0 + y
+    };
+}
 
 currentLocationButton.addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
             map.setCenter(pos);
+            map.setZoom(14);
             marker.setPosition(pos);
             marker.setVisible(true);
 
-            // Add markers for dummy petrol pump locations
+            // Generate random petrol pump locations within a 3 km radius of the current location
+            const radius = 2000; // radius in meters
+            const petrolPumps = [];
+            for (let i = 0; i < 5; i++) { // Generate 5 random locations
+                petrolPumps.push(generateRandomPosition(pos, radius));
+            }
+
+            // Add markers for random petrol pump locations
             petrolPumps.forEach((pump) => {
                 new google.maps.Marker({
                     position: pump,
                     map,
                     title: 'Petrol Pump',
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Example icon
                 });
             });
 
@@ -122,6 +185,9 @@ currentLocationButton.addEventListener('click', () => {
         handleLocationError(false, map.getCenter());
     }
 });
+
+
+
 
 
 
