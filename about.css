@@ -64,6 +64,36 @@ header {
     animation: fadeIn 2s ease-in-out;
 }
 
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.navbar.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode-toggle {
+    background-color: #45a049;
+    color:white;
+    border: none;
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.dark-mode .dark-mode-toggle {
+    background-color:#45a049;
+    color: white;
+}
+
+.dark-mode .about-section {
+    background-color: #333;
+}
+
 .about-section h1,
 .about-section h2 {
     color: #4CAF50;
