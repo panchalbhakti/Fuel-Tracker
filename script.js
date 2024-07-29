@@ -167,42 +167,6 @@ currentLocationButton.addEventListener('click', () => {
         map.fitBounds(bounds);
     });
 
-    // Fetch nearby places using RapidAPI
-    async function fetchNearbyPlaces(query, location, radius = 5000) {
-        const url = `https://map-places.p.rapidapi.com/queryautocomplete/json?input=${query}&location=${location}&radius=${radius}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': 'c0213903e8msh1eae9c419e0171cp1b8144jsn754236aa6560',
-                'x-rapidapi-host': 'map-places.p.rapidapi.com'
-            }
-        };
-
-        try {
-            const response = await fetch(url, options);
-            const result = await response.json();
-            displayResults(result);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    // Display the fetched results on the webpage
-    function displayResults(results) {
-        resultsContainer.innerHTML = '';
-
-        if (results && results.predictions) {
-            results.predictions.forEach((place) => {
-                const placeElement = document.createElement('div');
-                placeElement.textContent = place.description;
-                resultsContainer.appendChild(placeElement);
-            });
-        } else {
-            resultsContainer.textContent = 'No results found.';
-        }
-    }
-
-
     // Toggle Review Section
     reviewButton.addEventListener('click', () => {
         reviewSection.classList.toggle('hidden');
