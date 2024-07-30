@@ -55,67 +55,37 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
-// Function to generate random positions within a given radius (in meters) from a center point
-function generateRandomPosition(center, radius) {
-    const x0 = center.lat;
-    const y0 = center.lng;
-    const rd = radius / 111300; // about 111300 meters per degree of latitude
 
-    const u = Math.random();
-    const v = Math.random();
 
-    const w = rd * Math.sqrt(u);
-    const t = 2 * Math.PI * v;
-
-    const x = w * Math.cos(t);
-    const y = w * Math.sin(t);
-
-    // Adjust the x-coordinate for the shrinking of the east-west distances
-    const xp = x / Math.cos(y0);
-
-    return {
-        lat: x0 + xp,
-        lng: y0 + y
-    };
-}
-
-// Flag to track if markers have been added
-let markersAdded = false;
+    // Array of dummy petrol pump locations
+const petrolPumps = [
+    { lat: 23.0225, lng: 72.5714},
+    { lat: 23.0330, lng: 72.5254},
+    { lat: 23.0734, lng: 72.5261},
+    { lat: 23.0694, lng: 72.6315},
+    { lat: 23.0396, lng: 72.5660}, 
+];
 
 currentLocationButton.addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
             map.setCenter(pos);
-            map.setZoom(13); // Set the zoom level to zoom into the current location
+            map.setZoom(11);
             marker.setPosition(pos);
             marker.setVisible(true);
 
-            // Check if markers have already been added
-            if (!markersAdded) {
-                // Generate random petrol pump locations within a 3 km radius of the current location
-                const radius = 2000; // radius in meters
-                const petrolPumps = [];
-                for (let i = 0; i < 5; i++) { // Generate 10 random locations
-                    petrolPumps.push(generateRandomPosition(pos, radius));
-                }
-
-                // Add markers for random petrol pump locations
-                petrolPumps.forEach((pump) => {
-                    new google.maps.Marker({
-                        position: pump,
-                        map,
-                        title: 'Petrol Pump',
-                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                    });
+            petrolPumps.forEach((pump) => {
+                new google.maps.Marker({
+                    position: pump,
+                    map,
+                    icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                    title: 'Petrol Pump',
                 });
-
-                // Set the flag to true after adding markers
-                markersAdded = true;
-            }
+            });
 
             await fetchNearbyPlaces('petrol pump', pos.lat, pos.lng);
-        }, () => handleLocationError(true, map.getCenter()));
+            }, () => handleLocationError(true, map.getCenter()));
     } else {
         handleLocationError(false, map.getCenter());
     }
