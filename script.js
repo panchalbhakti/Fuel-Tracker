@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitRatingButton = document.getElementById('submitRating');
     const currentLocationButton = document.getElementById('current-location');
     const searchButton = document.getElementById('search-button');
-    const resultsContainer = document.getElementById('results');
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
     const navbar = document.getElementById('navbar');
