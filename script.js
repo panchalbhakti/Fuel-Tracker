@@ -79,7 +79,7 @@ currentLocationButton.addEventListener('click', () => {
                 new google.maps.Marker({
                     position: pump,
                     map,
-                    icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                    icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
                     title: 'Petrol Pump',
                 });
             });
@@ -113,6 +113,14 @@ currentLocationButton.addEventListener('click', () => {
             }, () => handleLocationError(true, map.getCenter()));
         } else {
             handleLocationError(false, map.getCenter());
+        }
+    });
+
+    currentLocationButton.addEventListener('click', () => {
+        results.innerHTML = '';
+        for(let i = 1; i < 6; i++){
+            results.innerHTML += `PetrolPump ${i}<br>`;
+            results.innerHTML += '<hr>';
         }
     });
 
