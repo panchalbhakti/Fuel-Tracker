@@ -114,9 +114,6 @@ currentLocationButton.addEventListener('click', () => {
         } else {
             handleLocationError(false, map.getCenter());
         }
-    });
-
-    currentLocationButton.addEventListener('click', () => {
         results.innerHTML = '';
         for(let i = 1; i < 6; i++){
             results.innerHTML += `PetrolPump ${i}<br>`;
