@@ -179,6 +179,32 @@ currentLocationButton.addEventListener('click', () => {
         });
         ratingDisplay.textContent = rating;
     }
+    
+    //Coupon Code 
+    document.getElementById('coupon-button').addEventListener('click', function() {
+
+        window.location.href = 'reward.html'; 
+        const rewardContainer = document.createElement('div');
+        rewardContainer.className = 'reward-container'; 
+        
+        // Create an image element for the reward
+        const rewardImage = document.createElement('img');
+        rewardImage.src = 'scratch card.png'; 
+        rewardImage.alt = 'Your Reward';
+        rewardImage.style.width = '200px'; 
+        rewardImage.style.height = 'auto'; 
+        
+        // Append the image to the new container
+        rewardContainer.appendChild(rewardImage);
+        
+        // Append the new container to the coupon div (or any other desired location)
+        document.querySelector('.coupon').appendChild(rewardContainer);
+        
+        // Optionally, disable the button to prevent multiple clicks
+        this.disabled = true;
+    });
+    
+    
 
     // Mock submit rating
     submitRatingButton.addEventListener('click', () => {
