@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&display=swap');
+
+body {
+    font-family: 'Bebas Neue', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f4f4f4;
+    color: #333;
+}
+
+h3 {
+    text-align: center;
+    color: #f9f9f9;
+    padding: 1rem;
+    background-color: #45a049;
+    font-size: 1.5rem;
+}
+
+.reward-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.reward-container img {
+    width: 300px;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
