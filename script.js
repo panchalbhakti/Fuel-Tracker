@@ -198,7 +198,7 @@ currentLocationButton.addEventListener('click', () => {
         rewardContainer.appendChild(rewardImage);
         
         // Append the new container to the coupon div (or any other desired location)
-        document.querySelector('.coupon').appendChild(rewardContainer);
+        // document.querySelector('.coupon').appendChild(rewardContainer);
         
         // Optionally, disable the button to prevent multiple clicks
         this.disabled = true;

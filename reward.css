@@ -9,24 +9,33 @@ body {
     color: #333;
 }
 
+header {
+    background-color: #45a049;
+}
+
 h3 {
     text-align: center;
+    margin: 0px 0px;
     color: #f9f9f9;
-    padding: 1rem;
-    background-color: #45a049;
     font-size: 1.5rem;
+    padding: 0.5rem;
 }
 
 .reward-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 3rem 3rem;
+    /* align-items: center;
+    height: 100vh; */
 }
 .reward-container img {
-    width: 300px;
+    width: 200px;
     height: auto;
     border: 2px solid #333;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
 }
