@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&display=swap');
 
 body {
     font-family: 'Bebas Neue', cursive;
@@ -369,4 +369,322 @@ body.dark-mode {
     }
     
 } 
+ */
 
+
+ /* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    height: 100%;
+    margin: 0;
+    color: white;
+}
+
+/* Header Styling */
+header {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.navbar-brand a {
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.navbar-links li {
+    margin-left: 25px;
+}
+
+.navbar-links a {
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #4CAF50;
+}
+
+.dark-mode-toggle {
+    background-color: #fff;
+    color: #4CAF50;
+    padding: 8px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    margin-left: 20px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Section Styling */
+.container-topic {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.section p {
+    font-size: 1.5rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Input and Button Styling */
+.input {
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    width: 300px;
+    margin: 0 10px 20px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #4CAF50;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+#current-location {
+    margin-top: 10px;
+    width: auto;
+    align-self: center; 
+}
+
+/* Main Content Styling */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    margin-top: 2rem; 
+    gap: 60px;                
+    width: 100%;
+    max-width: 1200px;       
+}
+
+#map {
+    height: 500px;
+    width: 600px;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+#map:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+}
+
+
+#results-container {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+
+#results-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#results li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Coupon and Review Section */
+.coupon, .review {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.primary-button {
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #4CAF50;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Review Section Hidden */
+.hidden {
+    display: none;
+}
+
+#reviewSection {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.star-rating .star {
+    font-size: 2rem;
+    color: lightgray;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.star-rating .star:hover,
+.star-rating .star.selected {
+    color: gold;
+    transform: scale(1.2);
+}
+
+/* Footer Styling */
+.footer-section {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-section p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.footer-section a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar-brand a {
+        font-size: 18px;
+    }
+
+    .navbar-links a {
+        font-size: 15px;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .dark-mode-toggle{
+        font-size: 10px;
+    }
+
+    #map {
+        width: 100%;
+        height: 300px;
+        margin-right: 0;
+    }
+
+    #results-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .input {
+        width: 200px;
+    }
+
+    .button, .primary-button {
+        font-size: 0.9rem;
+        padding: 12px 25px;
+    }
+
+    .section h2 {
+        font-size: 2.5rem;
+    }
+}
