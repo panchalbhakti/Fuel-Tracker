@@ -54,7 +54,6 @@ header {
     text-decoration: underline;
 }
 
-/* Dark mode styles */
 body.dark-mode {
     background-color: #121212;
     color: white;
@@ -369,4 +368,5 @@ body.dark-mode {
         width: 13rem;
     }
     
-}
+} 
+
