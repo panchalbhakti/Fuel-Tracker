@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
         map.fitBounds(bounds);
     });
 
-
-
     // Array of dummy petrol pump locations
 const petrolPumps = [
     { lat: 23.0225, lng: 72.5714},
@@ -196,9 +194,6 @@ currentLocationButton.addEventListener('click', () => {
         
         // Append the image to the new container
         rewardContainer.appendChild(rewardImage);
-        
-        // Append the new container to the coupon div (or any other desired location)
-        // document.querySelector('.coupon').appendChild(rewardContainer);
         
         // Optionally, disable the button to prevent multiple clicks
         this.disabled = true;
