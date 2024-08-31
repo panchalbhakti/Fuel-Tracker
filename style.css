@@ -383,7 +383,8 @@ body.dark-mode {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    /* background: linear-gradient(135deg, #4CAF50, #2E7D32); */
+    background: linear-gradient(140deg, #5e6d5e, #5db360);
     height: 100%;
     margin: 0;
     color: white;
@@ -531,8 +532,7 @@ header {
     width: 600px;
     max-width: 700px;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border: 2px solid #4CAF50;
+    box-shadow: 0 8px 20px rgba(147, 145, 145, 0.2);
     transition: transform 0.3s ease;
 }
 
@@ -572,6 +572,7 @@ header {
 
 .primary-button {
     padding: 15px 30px;
+    margin-top: 0.5rem;
     background-color: #fff;
     color: #4CAF50;
     border-radius: 25px;
