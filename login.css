@@ -10,7 +10,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #4CAF50, #29722d);
+    /* background: linear-gradient(135deg, #4CAF50, #29722d); */
+    background: linear-gradient(140deg, #5e6d5e, #5db360);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -44,7 +45,7 @@ body {
 /* Button Styling */
 .login-container button {
     background-color: #fff;
-    color: #4CAF50;
+    color: #fffbfb;
     padding: 12px 30px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -56,11 +57,12 @@ body {
 }
 
 .login-container button a {
-    color: #4CAF50;
+    color: #3cac46;
+    text-decoration: none;
 }
 
 .login-container button:hover {
-    background-color: #4CAF50;
+    background-color: #58cd5c;
     color: #fff;
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -80,7 +82,7 @@ body {
 }
 
 .login-container a:hover {
-    color: #ccc;
+    color: #fffdfd;
 }
 
 /* Responsive Styling */
