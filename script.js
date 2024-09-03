@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     const navbar = document.getElementById('navbar');
 
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        navbar.classList.toggle('dark-mode');
+    // darkModeToggle.addEventListener('click', () => {
+    //     body.classList.toggle('dark-mode');
+    //     navbar.classList.toggle('dark-mode');
 
-        if (body.classList.contains('dark-mode')) {
-            darkModeToggle.textContent = 'Light Mode';
-        } else {
-            darkModeToggle.textContent = 'Dark Mode';
-        }
-    });
+    //     if (body.classList.contains('dark-mode')) {
+    //         darkModeToggle.textContent = 'Light Mode';
+    //     } else {
+    //         darkModeToggle.textContent = 'Dark Mode';
+    //     }
+    // });
 
     // Map functionality
     const map = new google.maps.Map(document.getElementById('map'), {
