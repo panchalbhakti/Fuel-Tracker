@@ -510,7 +510,7 @@ header {
     align-self: center; 
 }
 
-
+/* Dropdown styling */
 .dropdown {
     margin: 10px;
     font-family: Arial, sans-serif;
@@ -532,12 +532,12 @@ header {
   
   select:hover {
     border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgba(4, 116, 49, 0.5);
   }
   
   select:focus {
     border-color: #0056b3;
-    box-shadow: 0 0 8px rgba(0, 86, 179, 0.7);
+    box-shadow: 0 0 8px rgba(63, 155, 71, 0.7);
   }
   
 
@@ -603,8 +603,9 @@ header {
 }
 
 .primary-button {
-    padding: 15px 30px;
+    padding: 12px 25px;
     margin-top: 0.5rem;
+    font-size: 1rem;
     background-color: #fff;
     color: #4CAF50;
     border-radius: 25px;
