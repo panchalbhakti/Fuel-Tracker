@@ -517,12 +517,12 @@ header {
   }
   
   label {
-    font-size: 16px;
+    font-size: 20px;
     margin-right: 8px;
   }
   
   select {
-    padding: 8px 12px;
+    padding: 6px 8px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
