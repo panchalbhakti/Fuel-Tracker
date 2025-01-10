@@ -510,6 +510,38 @@ header {
     align-self: center; 
 }
 
+
+.dropdown {
+    margin: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  select:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.7);
+  }
+  
+
+
 /* Main Content Styling */
 .main-container {
     display: flex;
