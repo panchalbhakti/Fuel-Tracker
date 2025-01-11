@@ -78,7 +78,7 @@ body {
     color: #fff;
     text-decoration: underline;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .login-container a:hover {
